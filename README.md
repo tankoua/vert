@@ -1,4 +1,5 @@
 #Easy devops
+#new version of the code V2
 # trigger pipeline
 # simple-java-maven-app
 
