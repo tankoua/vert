@@ -1,5 +1,5 @@
 #Easy devops
-#new version of the code V5
+#new version of the code V6
 
 # trigger pipeline
 # simple-java-maven-app
