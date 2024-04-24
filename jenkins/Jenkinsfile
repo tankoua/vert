@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'russparameterizedjob', defaultValue: 'master', description: 'Enter the name of the branch to build')
+    }
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "jenkins-maven"
@@ -7,7 +10,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git 'https://github.com/cnsidze/java-project.git'
+                // Use the BRANCH_NAME parameter in the git command to checkout the specified branch
+                git branch: params.BRANCH_NAME, url: 'https://github.com/cnsidze/java-project.git'
                 sh 'mvn -B -DskipTests clean package'
             }
         }
