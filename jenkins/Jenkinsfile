@@ -28,6 +28,12 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+                    // Grant Jenkins user access to Docker by adding it to the Docker group
+                    sh 'sudo usermod -aG docker jenkins'
+                    // Adjust Docker socket permissions
+                    sh 'sudo chmod 666 /var/run/docker.sock'
+                    // Restart Docker service (optional, might not be necessary depending on your setup)
+                    sh 'sudo systemctl restart docker'
                     // Pull Nginx Docker image
                     docker.image('nginx').pull()
                     // Build the Docker image with Nginx configuration
