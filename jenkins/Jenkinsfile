@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Use the BRANCH_NAME parameter in the git command to checkout the specified branch
-                git branch: params.BRANCH_NAME, url: 'https://github.com/russelltankoua/russ90.git/'
+                git 'https://github.com/russelltankoua/russ90.git/'
                 sh 'mvn -B -DskipTests clean package'
             }
         }
